@@ -21,7 +21,7 @@ uint8_t brightness = 100;
 static void xTimerFireFade(TimerHandle_t xTimer)
 {
     uint32_t duty = round(max_duty / 100.0 * brightness);
-    ESP_LOGI("Br", "Switching to: %d[%d]", brightness, duty);
+    ESP_LOGI("Br", "Switching to: %d[%d]", brightness, (int) duty);
     
     ledc_set_fade_with_time(LED_MODE, LED_CHANNEL, duty, 500);
     ledc_fade_start(LED_MODE, LED_CHANNEL, LEDC_FADE_NO_WAIT);
